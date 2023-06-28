@@ -1,0 +1,6 @@
+node_modules
+.eslintignore
+.eslintrc.json
+nodemon.json
+.vscode
+.parcel-cache

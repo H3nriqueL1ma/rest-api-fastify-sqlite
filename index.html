@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap" rel="stylesheet"> 
+    <title>CRUD</title>
+</head>
+<body>
+    <header><h1>C.R.U.D</h1></header>
+
+    <section>
+        <div id="informations">
+            <input type="text" placeholder="Nome" id="name" required>
+            <input type="text" placeholder="Profissão" id="profession" required>
+            <input type="date" placeholder="Nascimento" max="2023-12-31" min="1900-01-01" id="birth" required>
+            <button id="button" type="button">Enviar</button>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Profissão</th>
+                <th>Nascimento</th>
+                <th>Ação</th>
+            </tr>
+        </table>
+    </section>
+
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
