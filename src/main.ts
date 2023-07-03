@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { create_, read_, update_, delete_ } from "./routes/users";
 
@@ -53,18 +54,30 @@ $button?.addEventListener("click", async (event) => {
 				alert("Todas as edições são opcionais, ou seja, não é preciso completar todos os campos para atualizar, basta deixar em branco.");
 				const name_updated = prompt("Novo Nome:");
 				const profession_updated = prompt("Nova Profissão:");
-				const birth_updated = prompt("Nova Data de Nascimento:");
-		
-				const updatedData = [
-					name_updated !== null && name_updated !== "" ? name_updated : user.name,
-					profession_updated !== null && profession_updated !== "" ? profession_updated : user.profession,
-					birth_updated !== null && birth_updated !== "" ? birth_updated : user.birthdate
-				];
-	
-				update_(updatedData, user.id, "http://localhost:3333").then((updatedUser: any) => {
-					updateTableRow(newRow, updatedUser);
-				});
-			});
+				const birth_updated = prompt("Nova Data de Nascimento (Ex.: 2001-07-04):");
+			  
+				const regex = /^\d{4}-\d{2}-\d{2}$/;
+			  
+				if (hasNumbers(name_updated) || hasNumbers(profession_updated)) {
+				  	alert("[ERROR]: Não é possível colocar números no campo de Nome e Profissão!");
+				} else if (birth_updated !== null && birth_updated !== "" && !regex.test(birth_updated)) {
+				  	alert("[ERROR]: Formato de data de nascimento inválido!");
+				} else {
+				  	const updatedData = [
+						name_updated !== null && name_updated !== "" ? name_updated : user.name,
+						profession_updated !== null && profession_updated !== "" ? profession_updated : user.profession,
+						birth_updated !== null && birth_updated !== "" ? birth_updated : user.birthdate
+				  	];
+			  
+					update_(updatedData, user.id, "http://localhost:3333").then((updatedUser: any) => {
+						updateTableRow(newRow, updatedUser);
+					});
+				}
+			  });
+			  
+			  function hasNumbers(string: string) {
+				return /\d/.test(string);
+			  }
 	
 			$button_delete?.addEventListener("click", async () => {
 				await delete_(user.id, "http://localhost:3333");

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */ // Cria um novo usuário no servidor.
+/* eslint-disable no-mixed-spaces-and-tabs */ /* eslint-disable @typescript-eslint/no-explicit-any */ // Cria um novo usuário no servidor.
 async function $f855b82269797e02$export$fac6b4861de7f1ca(client, url) {
     const data_client = client;
     try {
@@ -102,16 +102,24 @@ $53ffd25df6034fb9$var$$button?.addEventListener("click", async (event)=>{
                 alert("Todas as edi\xe7\xf5es s\xe3o opcionais, ou seja, n\xe3o \xe9 preciso completar todos os campos para atualizar, basta deixar em branco.");
                 const name_updated = prompt("Novo Nome:");
                 const profession_updated = prompt("Nova Profiss\xe3o:");
-                const birth_updated = prompt("Nova Data de Nascimento:");
-                const updatedData = [
-                    name_updated !== null && name_updated !== "" ? name_updated : user.name,
-                    profession_updated !== null && profession_updated !== "" ? profession_updated : user.profession,
-                    birth_updated !== null && birth_updated !== "" ? birth_updated : user.birthdate
-                ];
-                (0, $f855b82269797e02$export$dc0df4e8eb0ce957)(updatedData, user.id, "http://localhost:3333").then((updatedUser)=>{
-                    $53ffd25df6034fb9$var$updateTableRow(newRow, updatedUser);
-                });
+                const birth_updated = prompt("Nova Data de Nascimento (Ex.: 2001-07-04):");
+                const regex = /^\d{4}-\d{2}-\d{2}$/;
+                if (hasNumbers(name_updated) || hasNumbers(profession_updated)) alert("[ERROR]: N\xe3o \xe9 poss\xedvel colocar n\xfameros no campo de Nome e Profiss\xe3o!");
+                else if (birth_updated !== null && birth_updated !== "" && !regex.test(birth_updated)) alert("[ERROR]: Formato de data de nascimento inv\xe1lido!");
+                else {
+                    const updatedData = [
+                        name_updated !== null && name_updated !== "" ? name_updated : user.name,
+                        profession_updated !== null && profession_updated !== "" ? profession_updated : user.profession,
+                        birth_updated !== null && birth_updated !== "" ? birth_updated : user.birthdate
+                    ];
+                    (0, $f855b82269797e02$export$dc0df4e8eb0ce957)(updatedData, user.id, "http://localhost:3333").then((updatedUser)=>{
+                        $53ffd25df6034fb9$var$updateTableRow(newRow, updatedUser);
+                    });
+                }
             });
+            function hasNumbers(string) {
+                return /\d/.test(string);
+            }
             $button_delete?.addEventListener("click", async ()=>{
                 await (0, $f855b82269797e02$export$38dab5a9fea42f39)(user.id, "http://localhost:3333");
                 newRow.remove();
