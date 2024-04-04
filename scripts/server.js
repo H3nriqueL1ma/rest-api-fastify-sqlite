@@ -7,7 +7,7 @@ const server = fastify();
 
 // Habilita o CORS com uma origem específica.
 server.register(cors, {
-	origin: "*",
+	origin: ["https://rest-api-fastify-sqlite.onrender.com", "https://crud-interface.onrender.com", "http://localhost:3333"],
 });
 
 // Cadastra um novo usuário.
