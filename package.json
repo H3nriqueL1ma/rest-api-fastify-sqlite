@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "server": "nodemon scripts/server.js",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "build": "npx parcel build scripts/main.js"
   },
   "dependencies": {
     "@fastify/cors": "^8.3.0",

@@ -61,6 +61,7 @@ async function $be44b82ee8fc761e$export$38dab5a9fea42f39(id, url) {
 }
 
 
+const $46c58ddc9e36399a$var$backendURL = "https://rest-api-fastify-sqlite.onrender.com/";
 const $46c58ddc9e36399a$var$$button = document.querySelector("#button");
 const $46c58ddc9e36399a$var$$table = document.querySelector("table");
 const $46c58ddc9e36399a$var$$input_name = document.querySelector("input#name");
@@ -84,13 +85,13 @@ $46c58ddc9e36399a$var$$button.addEventListener("click", async (event)=>{
             user_profession,
             user_birthdate
         ];
-        await (0, $be44b82ee8fc761e$export$fac6b4861de7f1ca)(data, "http://localhost:3333");
+        await (0, $be44b82ee8fc761e$export$fac6b4861de7f1ca)(data, $46c58ddc9e36399a$var$backendURL);
         await $46c58ddc9e36399a$var$loadUsers();
     }
 });
 async function $46c58ddc9e36399a$var$loadUsers() {
     $46c58ddc9e36399a$var$$table.innerHTML = "";
-    const users = await (0, $be44b82ee8fc761e$export$fe8726939961c446)(null, "http://localhost:3333");
+    const users = await (0, $be44b82ee8fc761e$export$fe8726939961c446)(null, $46c58ddc9e36399a$var$backendURL);
     users.forEach((user)=>{
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
@@ -120,7 +121,7 @@ async function $46c58ddc9e36399a$var$loadUsers() {
                     profession_updated !== null && profession_updated !== "" ? profession_updated : user.profession,
                     birth_updated !== null && birth_updated !== "" ? birth_updated : user.birthdate
                 ];
-                (0, $be44b82ee8fc761e$export$dc0df4e8eb0ce957)(updatedData, user.id, "http://localhost:3333").then((updatedUser)=>{
+                (0, $be44b82ee8fc761e$export$dc0df4e8eb0ce957)(updatedData, user.id, $46c58ddc9e36399a$var$backendURL).then((updatedUser)=>{
                     $46c58ddc9e36399a$var$updateTableRow(newRow, updatedUser);
                 });
             }
@@ -129,7 +130,7 @@ async function $46c58ddc9e36399a$var$loadUsers() {
             return /\d/.test(string);
         }
         $button_delete.addEventListener("click", async ()=>{
-            await (0, $be44b82ee8fc761e$export$38dab5a9fea42f39)(user.id, "http://localhost:3333");
+            await (0, $be44b82ee8fc761e$export$38dab5a9fea42f39)(user.id, $46c58ddc9e36399a$var$backendURL);
             newRow.remove();
         });
     });

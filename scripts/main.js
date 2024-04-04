@@ -1,5 +1,7 @@
 import { create_, read_, update_, delete_ } from './routes/users.js'
 
+const backendURL = "https://rest-api-fastify-sqlite.onrender.com/"
+
 const $button = document.querySelector("#button");
 const $table = document.querySelector("table");
 const $input_name = document.querySelector("input#name");
@@ -30,7 +32,7 @@ $button.addEventListener("click", async (event) => {
 			user_birthdate
 		];
 	
-		await create_(data, "http://localhost:3333");
+		await create_(data, backendURL);
 	
 		await loadUsers();
 	}
@@ -39,7 +41,7 @@ $button.addEventListener("click", async (event) => {
 async function loadUsers() {
 	$table.innerHTML = '';
 
-	const users = await read_(null, "http://localhost:3333");
+	const users = await read_(null, backendURL);
 
 	users.forEach((user) => {
 		const newRow = document.createElement("tr");
@@ -78,7 +80,7 @@ async function loadUsers() {
 					birth_updated !== null && birth_updated !== "" ? birth_updated : user.birthdate
 				  ];
 		  
-				update_(updatedData, user.id, "http://localhost:3333").then((updatedUser) => {
+				update_(updatedData, user.id, backendURL).then((updatedUser) => {
 					updateTableRow(newRow, updatedUser);
 				});
 			}
@@ -89,7 +91,7 @@ async function loadUsers() {
 		}
 
 		$button_delete.addEventListener("click", async () => {
-			await delete_(user.id, "http://localhost:3333");
+			await delete_(user.id, backendURL);
 			newRow.remove();
 		});
 	});
