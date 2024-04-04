@@ -61,7 +61,7 @@ async function $be44b82ee8fc761e$export$38dab5a9fea42f39(id, url) {
 }
 
 
-const $46c58ddc9e36399a$var$backendURL = "https://rest-api-fastify-sqlite.onrender.com/";
+const $46c58ddc9e36399a$var$backendURL = "https://rest-api-fastify-sqlite.onrender.com";
 const $46c58ddc9e36399a$var$$button = document.querySelector("#button");
 const $46c58ddc9e36399a$var$$table = document.querySelector("table");
 const $46c58ddc9e36399a$var$$input_name = document.querySelector("input#name");

@@ -3,7 +3,7 @@ export async function create_(client, url) {
 	const data_client = client;
 	try {
 		// Envia uma requisição POST para a rota /users do servidor com os dados do cliente.
-		const response = await fetch(url.trim() + "/users", {
+		const response = await fetch(url + "/users", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -33,7 +33,7 @@ export async function read_(client, url) {
 		const userName = client;
 
 		// Envia uma requisição GET para a rota /users do servidor com o parâmetro de consulta ?name.equals=${userName}.
-		const response = await fetch(url.trim() + `/users?name.equals=${userName}`);
+		const response = await fetch(url + `/users?name.equals=${userName}`);
 
 		// Converte a resposta em JSON.
 		const users = await response.json();
@@ -52,7 +52,7 @@ export async function update_(client, id, url) {
 	const userId = parseInt(id);
 
 	// Envia uma requisição PUT para a rota /users/${userId} do servidor com os dados atualizados do cliente.
-	return fetch(url.trim() + `/users/${userId}`, {
+	return fetch(url + `/users/${userId}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json"
@@ -70,7 +70,7 @@ export async function delete_(id, url) {
 	const userId = parseInt(id);
 
 	// Envia uma requisição DELETE para a rota /users/{userId} do servidor.
-	return fetch(url.trim() + `/users/${userId}`, {
+	return fetch(url + `/users/${userId}`, {
 		method: "DELETE"
 	}).then(response => response.json());
 }
