@@ -11,7 +11,7 @@ server.register(cors, {
 });
 
 // Cadastra um novo usuário.
-server.post("/users", async (request, reply) => {
+server.post("users", async (request, reply) => {
 	// Extrai nome, profissão e data de nascimento do corpo da requisição.
 	const { name, profession, birthdate } = request.body
 	// Cria um novo usuário no banco de dados usando o Prisma.
@@ -28,7 +28,7 @@ server.post("/users", async (request, reply) => {
 });
 
 // Recupera o usuário com filtro opcional por nome.
-server.get("/users", async (request, reply) => {
+server.get("users", async (request, reply) => {
 	// Extrai o parâmetro de consulta "name" da requisição.
 	const { name } = request.query;
 
@@ -50,7 +50,7 @@ server.get("/users", async (request, reply) => {
 });
 
 // Atualiza o usuário pelo ID.
-server.put("/users/:id", async (request) => {
+server.put("users/:id", async (request) => {
 	// Extrai o ID do usuário dos parâmetros da requisição.
 	const { id } = request.params;
 
@@ -77,7 +77,7 @@ server.put("/users/:id", async (request) => {
 });
 
 // Exclui um usuário pelo ID.
-server.delete("/users/:id", async (request, reply) => {
+server.delete("users/:id", async (request, reply) => {
 	// Extrai o ID do usuário dos parâmetros da requisição.
 	const { id } = request.params;
 
