@@ -96,6 +96,4 @@ server.delete("/users/:id", async (request, reply) => {
 });
 
 // Inicia o servidor HTTP na porta 3333.
-server.listen({port: 3333}).then(() => {
-	console.log("HTTP server running (http://localhost:3333)");
-});
+server.listen({host: '0.0.0.0', port: process.env.PORT ?? 3333})
