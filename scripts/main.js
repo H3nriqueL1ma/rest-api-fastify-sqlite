@@ -1,6 +1,6 @@
 import { create_, read_, update_, delete_ } from './routes/users.js'
 
-const backendURL = "https://rest-api-fastify-sqlite.onrender.com/"
+const backendURL = "https://rest-api-fastify-sqlite.onrender.com"
 
 const $button = document.querySelector("#button");
 const $table = document.querySelector("table");
