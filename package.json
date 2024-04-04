@@ -1,24 +1,19 @@
 {
-  "name": "projeto-crud",
-  "version": "1.0.0",
-  "description": "",
   "main": "dist/bundle.js",
+  "type": "module",
   "scripts": {
-    "server": "nodemon src/server.ts",
-    "build": "parcel build src/main.ts",
+    "server": "nodemon scripts/server.js",
     "studio": "npx prisma studio"
   },
-  "author": "Henrique Lima",
-  "license": "ISC",
   "dependencies": {
     "@fastify/cors": "^8.3.0",
     "@prisma/client": "^4.15.0",
-    "fastify": "^4.18.0",
+    "fastify": "^4.26.2",
     "fastify-cors": "^6.1.0",
-    "prisma": "^4.15.0",
-    "typescript": "^5.1.3"
+    "nodemon": "^3.1.0",
+    "prisma": "^4.15.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "parcel": "^2.12.0"
   }
 }
